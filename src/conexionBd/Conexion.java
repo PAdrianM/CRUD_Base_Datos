@@ -11,7 +11,7 @@ public class Conexion {
     private String port = "3306";
     private String dbName = "prueba";
     private String userName = "root";
-    private String passWord = "123";
+    private String passWord = "sisepuede";
 
     public Conexion (){
         try{
