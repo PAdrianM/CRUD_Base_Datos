@@ -1,53 +1,53 @@
 package modelo;
 
 public class Persona {
-    private int id;
-    private String nombre;
-    private String apellido;
-    private int municipioIdMuni;
-    private String cui;
+    private int idPersona;
+    private String Nombre;
+    private String Apellido;
+    private int Municipio_idMunicipio;
+    private String CUI;
 
-    public Persona(int id) {
-        this.id = id;
+    public Persona(int idPersona) {
+        this.idPersona = idPersona;
     }
 
-    public int getId() {
-        return id;
+    public int getIdPersona() {
+        return idPersona;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdPersona(int idPersona) {
+        this.idPersona = idPersona;
     }
 
     public String getNombre() {
-        return nombre;
+        return Nombre;
     }
 
     public void setNombre(String nombre) {
-        this.nombre = nombre;
+        Nombre = nombre;
     }
 
     public String getApellido() {
-        return apellido;
+        return Apellido;
     }
 
     public void setApellido(String apellido) {
-        this.apellido = apellido;
+        Apellido = apellido;
     }
 
-    public int getMunicipioIdMuni() {
-        return municipioIdMuni;
+    public int getMunicipio_idMunicipio() {
+        return Municipio_idMunicipio;
     }
 
-    public void setMunicipioIdMuni(int municipioIdMuni) {
-        this.municipioIdMuni = municipioIdMuni;
+    public void setMunicipio_idMunicipio(int municipio_idMunicipio) {
+        Municipio_idMunicipio = municipio_idMunicipio;
     }
 
-    public String getCui() {
-        return cui;
+    public String getCUI() {
+        return CUI;
     }
 
-    public void setCui(String cui) {
-        this.cui = cui;
+    public void setCUI(String CUI) {
+        this.CUI = CUI;
     }
 }
