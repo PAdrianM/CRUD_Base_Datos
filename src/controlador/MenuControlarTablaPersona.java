@@ -6,10 +6,14 @@ import dao.EditorTablaPersona;
 import modelo.Municipios;
 import modelo.Persona;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Scanner;
 
-public class PersonaControlador {
+public class MenuControlarTablaPersona {
+    Conexion conectado;
     public static void main(String[] args) {
 
         String opcion;
@@ -92,8 +96,6 @@ public class PersonaControlador {
 
                     case "B"://Ver registroS Tabla Persona
                         List<Persona> tablaPersona = personaEditor.selectAll();
-                        System.out.println("Ingrese el CUI de la persona que desea Buscar: ");
-                        persona.setCUI(s.next());
                         System.out.println("-------------------------------------------------------------------------------------------------");
                         System.out.printf("%10s %10s %20s %28s %20s", "idPersona", "Nombre", "Apellido", "Municipio_idMunicipio", "CUI");
                         System.out.println();
@@ -107,21 +109,32 @@ public class PersonaControlador {
                         break;
 
                     case "C"://Mandar a Traer los datos de una unica Persona
-                        List<Persona> buscarPersona = personaEditor.selectAll();
-                        System.out.println("Ingrese el CUI perteneciente a su DPI ");
-                        System.out.println("-------------------------------------------------------------------------------------------------");
-                        System.out.printf("%10s %10s %20s %28s %20s", "idPersona", "Nombre", "Apellido", "Municipio_idMunicipio", "CUI");
-                        System.out.println();
-                        System.out.println("-------------------------------------------------------------------------------------------------");
-                        for (Persona persona1 : buscarPersona) {
-                            System.out.format("%6s %15s %18s %25s %25s",
-                                    persona1.getIdPersona(), persona1.getNombre(), persona1.getApellido(), persona1.getMunicipio_idMunicipio(), persona1.getCUI());
-                            System.out.println();
+                        System.out.println("Ingrese el numero de DPI de la persona: ");
+                        String buscarCUI = s.next();
+                        try {
+                            String sql = "SELECT * FROM Persona WHERE CUI =?";
+                            PreparedStatement ps = conectado.Conectar().prepareStatement(sql);
+                            ps.setString(1,buscarCUI);
+
+                            ResultSet rs = ps.executeQuery();
+                            if (rs.next()){
+                                System.out.println("-------------------------------------------------------------------------------------------------");
+                                System.out.printf("%10s %10s %20s %28s %20s", "idPersona", "Nombre", "Apellido", "Municipio_idMunicipio", "CUI");
+                                System.out.println();
+                                System.out.println("-------------------------------------------------------------------------------------------------");
+                                    System.out.format("%6s %15s %18s %25s %25s",
+                                            rs.getInt("idPersona"), rs.getString("Nombre"), rs.getString("Apellido"), rs.getInt("Municipio_idMunicipio"), rs.getString("CUI"));
+                                    System.out.println();
+
+                                System.out.println("-------------------------------------------------------------------------------------------------");
+                            }else {
+                                System.out.println("Persona no encontrada!!!!");
+                                System.out.println("Por favor!!! Ingrese correctamente el numero de \"DPI\"");
+                            }
+                        }catch (SQLException e){
+                            System.out.println("Error al visualizar la informacion de la persona: " +e);
                         }
-                        System.out.println("-------------------------------------------------------------------------------------------------");
                         break;
-
-
                     default:
                         System.out.println("Escriba la letra Correctamente");
                 }

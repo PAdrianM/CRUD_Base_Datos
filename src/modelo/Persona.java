@@ -10,6 +10,7 @@ public class Persona {
 
     public Persona(int idPersona) {
         this.idPersona = idPersona;
+        //this.CUI = CUI;
     }
 
     public int getIdPersona() {

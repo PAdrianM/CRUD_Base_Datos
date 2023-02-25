@@ -15,7 +15,7 @@ public class EditorTablaPersona {
     public EditorTablaPersona(Conexion conectado){
         this.conectado = conectado;
     }
-    public boolean Insert(Persona persona){//Objetos de tipo persona
+    public boolean Insert(Persona persona){//Objetos de tipo persona PARA INSERTAR EN LA TABLA
         String sql = "insert into persona values (?,?,?,?,?);";//SENTENCIA PREPARAD
 
         try {
@@ -60,7 +60,4 @@ public class EditorTablaPersona {
             return null;
         }
     }
-
-
-
 }
