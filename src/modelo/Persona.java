@@ -7,6 +7,7 @@ public class Persona {
     private int Municipio_idMunicipio;
     private String CUI;
 
+
     public Persona(int idPersona) {
         this.idPersona = idPersona;
     }

@@ -8,11 +8,11 @@ import java.sql.ResultSet;
 import java.util.LinkedList;
 import java.util.List;
 
-public class PersonaDao {
+public class EditorTablaPersona {
 
     Conexion conectado;
 
-    public PersonaDao (Conexion conectado){
+    public EditorTablaPersona(Conexion conectado){
         this.conectado = conectado;
     }
     public boolean Insert(Persona persona){//Objetos de tipo persona
